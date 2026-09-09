@@ -52,7 +52,11 @@ export interface ArtifactState {
   byTab: Record<TabId, ArtifactTabState>
 }
 
-/** The tab's empty bucket. */
+/**
+ * Create the tab's empty bucket.
+ * @param viewer - artifact viewer that owns the bucket.
+ * @returns one empty artifact tab state.
+ */
 export function fresh(viewer: ArtifactViewer): ArtifactTabState {
   return {
     viewer,

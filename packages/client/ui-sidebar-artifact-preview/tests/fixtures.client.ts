@@ -47,7 +47,7 @@ export function hookOf<T>(inst: { subscribe: (fn: () => void) => () => void; get
   }
 }
 
-export function meta(changed = false, remoteFailure: RemoteFailure | undefined = undefined): ResourceSnapshot<WorkspaceFileResource> {
+export function meta(changed = false, remoteFailure?: RemoteFailure): ResourceSnapshot<WorkspaceFileResource> {
   const reload = vi.fn<() => void>()
   const value: WorkspaceFileResource = { absolutePath: ABSOLUTE_PATH, version: 'v1', bytes: 100, changed }
   return remoteFailure === undefined

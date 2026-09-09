@@ -228,6 +228,20 @@
     - id: ui-sidebar-artifact-preview
       name: '@deepseek-ai/dsh-client-ui-sidebar-artifact-preview'
 
+    # Rendered previews for PDF, Word, and Excel files. Office parser
+    # dependencies stay outside the common artifact viewer package.
+    - id: ui-sidebar-office-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-office-preview'
+
+    # Unified diff and patch files get a compact changed-lines viewer.
+    - id: ui-sidebar-patch-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-patch-preview'
+
+    # Sanitized SVG/vector preview. It stays separate from generic image
+    # preview because SVG can contain active content and external references.
+    - id: ui-sidebar-svg-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-svg-preview'
+
     # The right Sidebar's first outside tab type: workspace text files, read
     # through the bounded workspaceFiles endpoint. Rendered artifact viewers use
     # the extension band and yield unknown extensions back to this fallback.

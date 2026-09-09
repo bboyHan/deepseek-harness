@@ -1,5 +1,5 @@
 ---
-description: "Web profile bundle layer，为 Markdown、JSON、CSV/TSV 与图片添加右侧栏渲染式产物 viewer。"
+description: "Web profile bundle layer，为 Markdown、JSON、CSV/TSV、图片、Office 文件、patch 与 SVG 添加右侧栏渲染式产物 viewer。"
 kind: "package-bundle"
 ---
 
@@ -9,7 +9,7 @@ kind: "package-bundle"
 
 ## 概述
 
-`dsh-artifact-viewers` 为自定义 Web profile 添加右侧栏渲染式文件 preview。Markdown、JSON、CSV/TSV 与常见图片文件会用理解格式的 viewer 打开，未知扩展名继续使用 text fallback。默认 `dsh-web-app` bundle 已经包含同一个 viewer row，因此只有在组合自定义 Web 表层时才安装这一层。该层只插入一条浏览器插件 row，不添加模型可见行为。
+`dsh-artifact-viewers` 为自定义 Web profile 添加右侧栏渲染式文件 preview。Markdown、JSON、CSV/TSV、常见图片文件、PDF、DOCX、XLSX、unified diff 文件与经过净化的 SVG 会用理解格式的 viewer 打开，未知扩展名继续使用 text fallback。默认 `dsh-web-app` bundle 已经包含相同的 viewer row，因此只有在组合自定义 Web 表层时才安装这一层。该层插入四条浏览器插件 row，不添加模型可见行为。
 
 ## 目录
 
@@ -34,19 +34,25 @@ dsh plugin --profile <name> add @deepseek-ai/dsh-artifact-viewers
 dsh plugin --profile <name> remove @deepseek-ai/dsh-artifact-viewers
 ```
 
-内置 bundle 从 dsh 安装中解析。profile reconcile 期间，`dsh.bundle.patch` 会把 launcher 指向本包的 `cordis.patch.yml`；如果该声明缺失，本包不会被当作可安装 profile layer。不要把本包添加到默认 `web` profile，因为 `dsh-web-app` 已经插入相同的 `ui-sidebar-artifact-preview` row id。
+内置 bundle 从 dsh 安装中解析。profile reconcile 期间，`dsh.bundle.patch` 会把 launcher 指向本包的 `cordis.patch.yml`；如果该声明缺失，本包不会被当作可安装 profile layer。不要把本包添加到默认 `web` profile，因为 `dsh-web-app` 已经插入相同的 viewer row id。
 
 ### 你会获得什么
 
-patch 插入一条 client plugin row：
+patch 插入四条 client plugin row：
 
 ```yaml
 - insert:
     - id: ui-sidebar-artifact-preview
       name: '@deepseek-ai/dsh-client-ui-sidebar-artifact-preview'
+    - id: ui-sidebar-office-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-office-preview'
+    - id: ui-sidebar-patch-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-patch-preview'
+    - id: ui-sidebar-svg-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-svg-preview'
 ```
 
-这条 row 贡献用于 Markdown、JSON、CSV/TSV 与常见浏览器图片格式的右侧栏 preview tab type。行为由 [`@deepseek-ai/dsh-client-ui-sidebar-artifact-preview`](../../client/ui-sidebar-artifact-preview/README.zh.md) 负责。
+这些 row 贡献用于 Markdown、JSON、CSV/TSV、常见浏览器图片格式、PDF、DOCX、XLSX、unified diff 文件与经过净化 SVG 的右侧栏 preview tab type。格式行为与限制由对应的 client package README 负责。
 
 -----
 
@@ -56,13 +62,13 @@ patch 插入一条 client plugin row：
 <details>
 <summary>实现细节 - 点击展开</summary>
 
-该 bundle 是一个静态 patch document，包含一个 `insert` list。row id 与默认 Web bundle 使用的 id 相同，因此同时应用两层的 profile 会定位同一条 row，而不是挂载两个独立 viewer。Loader row 顺序不定义激活顺序；client plugin 会等待右侧栏 tab registry、slot registry、locale service 与 workspace-files Remote namespace。
+该 bundle 是一个静态 patch document，包含一个 `insert` list。每条 row id 都与默认 Web bundle 使用的 id 相同，因此同时应用两层的 profile 会定位同一批 row，而不是挂载重复 viewer。Loader row 顺序不定义激活顺序；每个 client plugin 会等待右侧栏 tab registry、slot registry、locale service 与 workspace-files Remote namespace。
 
 ### 源码地图
 
 | 文件 | 职责 |
 |---|---|
-| [`cordis.patch.yml`](cordis.patch.yml) | 可安装 profile patch，插入 `ui-sidebar-artifact-preview` |
+| [`cordis.patch.yml`](cordis.patch.yml) | 可安装 profile patch，插入渲染式 viewer row |
 | [`src/index.ts`](src/index.ts) | 包入口；不承载运行时 API |
 | [`tests/artifact-viewers.spec.ts`](tests/artifact-viewers.spec.ts) | Manifest 声明、patch 解析与插入 row 的依赖检查 |
 | - | 不发布运行时不变式伴生入口；bundle 是静态 patch-list carrier，不拥有可检查的可变关系。 |
@@ -97,8 +103,8 @@ patch 插入一条 client plugin row：
 这些限制说明 bundle 何时有用，以及被插入的 viewer 不覆盖什么。
 
 - **需要 Web profile 前置条件** - 这一层不插入 Web runtime、右侧栏、resource provider 或 workspace-files Remote namespace。
-- **默认 Web 已内置同一 row** - 默认 `web` profile 已通过 `dsh-web-app` 包含相同 row id；在那里安装本 bundle 没有必要。
-- **Viewer 限制属于插件** - 文件格式、图片大小限制、SVG exclusion 与 first-page text 行为由被插入的 client plugin 文档说明。
+- **默认 Web 已内置同一批 row** - 默认 `web` profile 已通过 `dsh-web-app` 包含相同 viewer row id；在那里安装本 bundle 没有必要。
+- **Viewer 限制属于插件** - 文件格式、图片大小限制、SVG 净化、patch 语法与 first-page text 行为由被插入的 client plugin 文档说明。
 - **Patch override 语义适用** - 后续 profile patch 重写或禁用 `ui-sidebar-artifact-preview` 时，会控制 viewer 是否继续挂载。
 
 <a id="dev-note"></a>

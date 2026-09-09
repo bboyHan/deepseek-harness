@@ -121,6 +121,13 @@ export function artifactFace(
           return
         }
         actions.text(tabId, viewer, result.value)
+      }).catch((error: unknown) => {
+        if (signal.aborted || reads.generation !== generation) return
+        actions.failed(tabId, viewer, {
+          code: 'artifact-preview/read-failed',
+          message: error instanceof Error ? error.message : String(error),
+          details: {},
+        })
       })
     }
 

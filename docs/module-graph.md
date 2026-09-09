@@ -174,7 +174,10 @@ flowchart TD
     pkg_client_ui_sidebar["client-ui-sidebar"]
     pkg_client_ui_sidebar_artifact_preview["client-ui-sidebar-artifact-preview"]
     pkg_client_ui_sidebar_files["client-ui-sidebar-files"]
+    pkg_client_ui_sidebar_office_preview["client-ui-sidebar-office-preview"]
+    pkg_client_ui_sidebar_patch_preview["client-ui-sidebar-patch-preview"]
     pkg_client_ui_sidebar_right["client-ui-sidebar-right"]
+    pkg_client_ui_sidebar_svg_preview["client-ui-sidebar-svg-preview"]
     pkg_client_ui_sidebar_textpreview["client-ui-sidebar-textpreview"]
     pkg_client_ui_skill["client-ui-skill"]
     pkg_client_ui_slots["client-ui-slots"]
@@ -1235,7 +1238,10 @@ flowchart TD
 | [`client-ui-sidebar`](../packages/client/ui-sidebar) | `client` | — |
 | [`client-ui-sidebar-artifact-preview`](../packages/client/ui-sidebar-artifact-preview) | `client` | — |
 | [`client-ui-sidebar-files`](../packages/client/ui-sidebar-files) | `client` | — |
+| [`client-ui-sidebar-office-preview`](../packages/client/ui-sidebar-office-preview) | `client` | — |
+| [`client-ui-sidebar-patch-preview`](../packages/client/ui-sidebar-patch-preview) | `client` | — |
 | [`client-ui-sidebar-right`](../packages/client/ui-sidebar-right) | `client` | — |
+| [`client-ui-sidebar-svg-preview`](../packages/client/ui-sidebar-svg-preview) | `client` | — |
 | [`client-ui-sidebar-textpreview`](../packages/client/ui-sidebar-textpreview) | `client` | — |
 | [`client-ui-skill`](../packages/client/ui-skill) | `client` | — |
 | [`client-ui-slots`](../packages/client/ui-slots) | `client` | — |

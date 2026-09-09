@@ -30,7 +30,7 @@ export function parseDelimited(text: string, delimiter: ',' | '\t'): DelimitedTa
     row = []
   }
   while (index < text.length) {
-    const char = text[index]
+    const char = text[index] ?? ''
     if (quoted) {
       if (char === '"') {
         if (text[index + 1] === '"') {

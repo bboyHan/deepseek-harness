@@ -2103,7 +2103,12 @@ export const CLIENT_SLOT_API: readonly ClientSlotEntry[] = [
     occupants: [
       'client-ui-sidebar-artifact-preview component',
       'client-ui-sidebar-files FilesBody',
+      'client-ui-sidebar-office-preview PdfPreview',
+      'client-ui-sidebar-office-preview DocxPreview',
+      'client-ui-sidebar-office-preview XlsxPreview',
+      'client-ui-sidebar-patch-preview PatchPreview',
       'client-ui-sidebar-right GuideBody',
+      'client-ui-sidebar-svg-preview SvgPreview',
       'client-ui-sidebar-textpreview TextPreview',
     ],
     replaceRisk: 'none',

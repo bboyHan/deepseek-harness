@@ -62,7 +62,7 @@ export function JsonPreview(props: ArtifactPreviewProps): ReactNode {
         {parsed?.ok === true && typeof parsed.value === 'object' && parsed.value !== null && (
           <>
             <JsonTree
-              data={parsed.value as object | unknown[]}
+              data={parsed.value}
               label={t('jsonRoot')}
               labels={labels}
               className={css.jsonTree}

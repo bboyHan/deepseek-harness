@@ -1,7 +1,7 @@
 /** Shared chrome for artifact preview bodies. */
 import { useEffect, useMemo, useRef } from 'react'
 import type { ReactNode } from 'react'
-import { IconRefreshOutline16 } from '@deepseek-ai/dsh-client-ui-primitives'
+import { fileSizeText, IconRefreshOutline16 } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { InjectFace, PropsLocale, PropsRuntime, PropsStore } from '@deepseek-ai/dsh-client-ui-slots'
 import type { ArtifactInjected } from './face.ts'
 import { artifactFailureOf, failureLine } from './failure-line.ts'
@@ -62,10 +62,11 @@ export function usePreviewData(props: ArtifactPreviewProps, viewer: ArtifactView
 export function useRestoredScroll(state: ArtifactTabState | undefined) {
   const ref = useRef<HTMLDivElement>(null)
   const loaded = state?.text !== undefined || state?.image !== undefined
+  const scrollTop = loaded ? state.scrollTop : undefined
   useEffect(() => {
     const body = ref.current
-    if (loaded && body !== null && state !== undefined) body.scrollTop = state.scrollTop
-  }, [loaded])
+    if (scrollTop !== undefined && body !== null) body.scrollTop = scrollTop
+  }, [scrollTop])
   return ref
 }
 
@@ -84,6 +85,7 @@ export function PreviewChrome({
   children: ReactNode
 }): ReactNode {
   const displayPath = data.meta.value?.absolutePath ?? data.file.path
+  const bytes = state.text?.bytes ?? state.image?.bytes ?? data.meta.value?.bytes
   return (
     <div className={css.preview} data-artifact-preview-url={data.contentId}>
       {data.meta.failure !== undefined
@@ -117,6 +119,11 @@ export function PreviewChrome({
           <IconRefreshOutline16 />
         </button>
       </div>
+      {bytes !== undefined && (
+        <div className={css.meta} data-artifact-preview-meta>
+          {t('fileSize', { size: fileSizeText(bytes) })}
+        </div>
+      )}
       {children}
     </div>
   )

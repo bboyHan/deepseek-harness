@@ -1,5 +1,6 @@
 /** Human-readable failure lines for artifact preview reads. */
 import type { TranslateNS } from '@deepseek-ai/dsh-client-locale/client'
+import { fileSizeText } from '@deepseek-ai/dsh-client-ui-primitives'
 
 /** Failure payloads this package stores. */
 export interface ArtifactFailure {
@@ -20,11 +21,13 @@ export function artifactFailureOf(failure: { readonly code: string; readonly mes
   return { code: failure.code, message: failure.message, details: { ...failure.details } }
 }
 
-/** Render a byte count the way a person reads one. */
+/**
+ * Render a byte count the way a person reads one.
+ * @param bytes - byte count to format.
+ * @returns a compact byte, KB, or MB label.
+ */
 export function humanBytes(bytes: number): string {
-  if (bytes >= 1024 * 1024) return `${Math.round(bytes / (1024 * 1024))} MB`
-  if (bytes >= 1024) return `${Math.round(bytes / 1024)} KB`
-  return `${bytes} B`
+  return fileSizeText(bytes)
 }
 
 function detailNumber(failure: ArtifactFailure, key: string): number | undefined {

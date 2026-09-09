@@ -19,7 +19,7 @@ A tab type is two registrations that share one `kind`: a static definition in `c
 | [`client/resources`](../../packages/client/resources/README.md) | `ctx.resources`, `useResource`, the protocol → value roster `ResourceProtocolMap` |
 | [`api/workspace-files`](../../packages/api/workspace-files/README.md) | Host `ctx.workspaceFiles`, the `workspaceFiles` Remote namespace, and the Client `file` resource provider |
 | [`util/workspace-path`](../../packages/util/workspace-path/README.md) | The file address grammar: `fileAddressFor`, `parseFileAddress` |
-| [`client/ui-sidebar-textpreview`](../../packages/client/ui-sidebar-textpreview/README.md), [`client/ui-sidebar-files`](../../packages/client/ui-sidebar-files/README.md) | The shipped `text` and `files` types |
+| [`client/ui-sidebar-textpreview`](../../packages/client/ui-sidebar-textpreview/README.md), [`client/ui-sidebar-files`](../../packages/client/ui-sidebar-files/README.md), [`client/ui-sidebar-artifact-preview`](../../packages/client/ui-sidebar-artifact-preview/README.md), [`client/ui-sidebar-office-preview`](../../packages/client/ui-sidebar-office-preview/README.md), [`client/ui-sidebar-patch-preview`](../../packages/client/ui-sidebar-patch-preview/README.md), [`client/ui-sidebar-svg-preview`](../../packages/client/ui-sidebar-svg-preview/README.md) | The shipped text, file, artifact, office, patch, and SVG types |
 
 ## Addresses
 
@@ -121,6 +121,10 @@ The Host `ctx.workspaceFiles` service and the generated `workspaceFiles` Remote 
 
 - **`guide`** — `builtin`, opened as `openTab('guide')`. A centred title, one line, and one entry box per `guide` entry the registered types contributed, in `order`; picking a box opens the contributing type as a page in the guide tab's place. A pane holds at most one guide tab, every new pane is seeded with one, and the strip's add control appears only while its pane has none ([guide](../../packages/client/ui-sidebar-right/README.md#the-guide)).
 - **`text`** — `fallback`, `dsh-resource://file/**`. Reads metadata through `useResource<'file'>` and the file's lines by page through `read`; honours `params.line` on every navigation; keeps pages, scroll, and wrap in its own store ([README](../../packages/client/ui-sidebar-textpreview/README.md)).
+- **`markdown`, `image`, `json`, and `csv`** — `extension`, matching common Markdown, image, JSON, CSV, and TSV extensions. The artifact viewer reads a first text page or complete image bytes and renders format-aware content ([README](../../packages/client/ui-sidebar-artifact-preview/README.md)).
+- **`office-pdf`, `office-docx`, and `office-xlsx`** — `extension`, matching PDF, DOCX, and XLSX files. The office viewer assembles bounded bytes and parses each supported document format in the browser ([README](../../packages/client/ui-sidebar-office-preview/README.md)).
+- **`patch`** — `extension`, `*.diff`, `*.patch`, `*.udiff`. Reads the first text page through `workspaceFiles.read`, parses unified diff hunks, and renders changed lines with summary counts; unknown patch syntax fails visibly instead of silently becoming a text preview ([README](../../packages/client/ui-sidebar-patch-preview/README.md)).
+- **`svg`** — `extension`, `*.svg`. Reads complete bytes, rejects unsafe active or external content, sanitizes the XML, and renders it through an image Blob URL ([README](../../packages/client/ui-sidebar-svg-preview/README.md)).
 - **`files`** — `builtin`, opened as `openTab('files')`. The workspace directory tree, listed lazily through `list`, opening a file with `tab.actions.openResource(fileAddressFor(sessionId, root, path))` into its own pane ([README](../../packages/client/ui-sidebar-files/README.md)).
 
 <a id="not-built"></a>

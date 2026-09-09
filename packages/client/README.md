@@ -45,6 +45,9 @@ The kernel packages boot and serve the page; the UI feature packages present it.
 | [`resources/`](resources/README.md) | Unified resource model: protocol providers behind the `useResource` session standard hook | `ctx.resources` |
 | [`ui-sidebar-files/`](ui-sidebar-files/README.md) | Right-Sidebar workspace file tree tab type | — |
 | [`ui-sidebar-artifact-preview/`](ui-sidebar-artifact-preview/README.md) | Rendered right-Sidebar previews for Markdown, JSON, CSV/TSV, and images | — |
+| [`ui-sidebar-office-preview/`](ui-sidebar-office-preview/README.md) | Rendered right-Sidebar previews for PDF, DOCX, and XLSX | — |
+| [`ui-sidebar-patch-preview/`](ui-sidebar-patch-preview/README.md) | Rendered right-Sidebar previews for unified diff and patch files | — |
+| [`ui-sidebar-svg-preview/`](ui-sidebar-svg-preview/README.md) | Sanitized rendered right-Sidebar previews for SVG files | — |
 | [`ui-brand-official/`](ui-brand-official/README.md) | Fills the generic browser-brand slots with the official name and marks | — |
 | [`ui-workspace/`](ui-workspace/README.md) | Provides workspace selection and creation surfaces | — |
 | [`ui-conversation/`](ui-conversation/README.md) | Presents the active conversation and its input surface | — |

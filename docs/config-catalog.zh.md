@@ -415,6 +415,56 @@ export interface Config {
 
 来源：[`packages/client/ui-sidebar-artifact-preview/src/index.ts:9`](../packages/client/ui-sidebar-artifact-preview/src/index.ts)
 
+<a id="deepseek-aidsh-client-ui-sidebar-office-preview"></a>
+
+## `@deepseek-ai/dsh-client-ui-sidebar-office-preview`
+
+```ts config-catalog
+/** Runtime limits for browser-side office previews. */
+export interface Config {
+  /** Largest office file the browser assembles before parsing. */
+  maxOfficeBytes?: number
+  /** Largest number of worksheet rows rendered from one sheet. */
+  maxSpreadsheetRows?: number
+  /** Largest number of worksheet columns rendered from one sheet. */
+  maxSpreadsheetColumns?: number
+  /** Largest number of worksheets rendered from one workbook. */
+  maxSpreadsheetSheets?: number
+}
+```
+
+来源：[`packages/client/ui-sidebar-office-preview/src/index.ts:9`](../packages/client/ui-sidebar-office-preview/src/index.ts)
+
+<a id="deepseek-aidsh-client-ui-sidebar-patch-preview"></a>
+
+## `@deepseek-ai/dsh-client-ui-sidebar-patch-preview`
+
+```ts config-catalog
+/** Runtime configuration for patch previews. */
+export interface Config {
+  /** Largest number of parsed hunks retained from one patch page. */
+  maxHunks?: number
+}
+```
+
+来源：[`packages/client/ui-sidebar-patch-preview/src/index.ts:9`](../packages/client/ui-sidebar-patch-preview/src/index.ts)
+
+<a id="deepseek-aidsh-client-ui-sidebar-svg-preview"></a>
+
+## `@deepseek-ai/dsh-client-ui-sidebar-svg-preview`
+
+```ts config-catalog
+/** Runtime configuration for the SVG browser preview. */
+export interface Config {
+  /** Largest SVG file the browser assembles and sanitizes. */
+  maxSvgBytes?: number
+  /** Whether HTTP(S) references inside the SVG are stripped or kept. */
+  externalResourcePolicy?: 'strip' | 'allow'
+}
+```
+
+来源：[`packages/client/ui-sidebar-svg-preview/src/index.ts:5`](../packages/client/ui-sidebar-svg-preview/src/index.ts)
+
 <a id="deepseek-aidsh-code-runtime-worker-thread"></a>
 
 ## `@deepseek-ai/dsh-code-runtime-worker-thread`

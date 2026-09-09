@@ -38,6 +38,15 @@
   border-bottom: 0.5px solid var(--dsw-alias-border-l1);
 }
 
+.meta {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 12px;
+  line-height: 1.4;
+  border-bottom: 0.5px solid var(--dsw-alias-border-l1);
+}
+
 .body {
   flex: 1 1 auto;
   min-height: 0;

@@ -19,7 +19,7 @@
 | [`client/resources`](../../packages/client/resources/README.zh.md) | `ctx.resources`、`useResource`、协议 → 值类型的花名册 `ResourceProtocolMap` |
 | [`api/workspace-files`](../../packages/api/workspace-files/README.zh.md) | Host `ctx.workspaceFiles`、`workspaceFiles` Remote 命名空间与 Client `file` 资源提供者 |
 | [`util/workspace-path`](../../packages/util/workspace-path/README.zh.md) | 文件地址语法：`fileAddressFor`、`parseFileAddress` |
-| [`client/ui-sidebar-textpreview`](../../packages/client/ui-sidebar-textpreview/README.zh.md)、[`client/ui-sidebar-files`](../../packages/client/ui-sidebar-files/README.zh.md) | 内置的 `text` 与 `files` 类型 |
+| [`client/ui-sidebar-textpreview`](../../packages/client/ui-sidebar-textpreview/README.zh.md)、[`client/ui-sidebar-files`](../../packages/client/ui-sidebar-files/README.zh.md)、[`client/ui-sidebar-artifact-preview`](../../packages/client/ui-sidebar-artifact-preview/README.zh.md)、[`client/ui-sidebar-office-preview`](../../packages/client/ui-sidebar-office-preview/README.zh.md)、[`client/ui-sidebar-patch-preview`](../../packages/client/ui-sidebar-patch-preview/README.zh.md)、[`client/ui-sidebar-svg-preview`](../../packages/client/ui-sidebar-svg-preview/README.zh.md) | 内置的 text、file、artifact、office、patch 与 SVG 类型 |
 
 ## 地址
 
@@ -121,6 +121,10 @@ Host 的 `ctx.workspaceFiles` 服务与生成的 `workspaceFiles` Remote 命名�
 
 - **`guide`**——`builtin`，以 `openTab('guide')` 打开。居中标题、一行说明，以及已注册类型贡献的每个 `guide` 入口一框、按 `order` 排列；点一框即在引导 tab 的位置把贡献它的类型作为页面打开。每个 pane 最多一个引导 tab，每个新 pane 都种入一个，tab 条的新增控件只在本 pane 没有引导时出现（[引导](../../packages/client/ui-sidebar-right/README.zh.md#the-guide)）。
 - **`text`**——`fallback`，`dsh-resource://file/**`。经 `useResource<'file'>` 读元数据、经 `read` 按页读文件行；每次导航都响应 `params.line`；页、滚动与换行放在自己的 store 里（[README](../../packages/client/ui-sidebar-textpreview/README.zh.md)）。
+- **`markdown`、`image`、`json` 与 `csv`**——`extension`，匹配常见 Markdown、图片、JSON、CSV 与 TSV 扩展名。artifact viewer 读取第一页文本或完整图片字节，并渲染理解格式的内容（[README](../../packages/client/ui-sidebar-artifact-preview/README.zh.md)）。
+- **`office-pdf`、`office-docx` 与 `office-xlsx`**——`extension`，匹配 PDF、DOCX 与 XLSX 文件。office viewer 在浏览器中组装有界字节并解析各自支持的 document 格式（[README](../../packages/client/ui-sidebar-office-preview/README.zh.md)）。
+- **`patch`**——`extension`，`*.diff`、`*.patch`、`*.udiff`。经 `workspaceFiles.read` 读取第一页文本，解析 unified diff hunk，并用统计信息渲染变更行；不支持的 patch 语法会明确显示失败，不会静默变成 text preview（[README](../../packages/client/ui-sidebar-patch-preview/README.zh.md)）。
+- **`svg`**——`extension`，`*.svg`。读取完整字节，拒绝不安全的主动内容或外部内容，净化 XML，并通过 image Blob URL 渲染（[README](../../packages/client/ui-sidebar-svg-preview/README.zh.md)）。
 - **`files`**——`builtin`，以 `openTab('files')` 打开。工作区目录树，经 `list` 懒加载，用 `tab.actions.openResource(fileAddressFor(sessionId, root, path))` 在自己所在 pane 打开文件（[README](../../packages/client/ui-sidebar-files/README.zh.md)）。
 
 <a id="not-built"></a>

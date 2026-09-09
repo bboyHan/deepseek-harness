@@ -1,5 +1,5 @@
 ---
-description: "A Web profile bundle layer that adds rendered right-Sidebar artifact viewers for Markdown, JSON, CSV/TSV, and images."
+description: "A Web profile bundle layer that adds rendered right-Sidebar artifact viewers for Markdown, JSON, CSV/TSV, images, Office files, patches, and SVG."
 kind: "package-bundle"
 ---
 
@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-`dsh-artifact-viewers` adds rendered right-Sidebar file previews to a custom Web profile. Markdown, JSON, CSV/TSV, and common image files open with format-aware viewers while unknown extensions continue to use the text fallback. The stock `dsh-web-app` bundle already includes the same viewer row, so install this layer only when composing a custom Web surface. The layer inserts one browser plugin row and adds no model-visible behavior.
+`dsh-artifact-viewers` adds rendered right-Sidebar file previews to a custom Web profile. Markdown, JSON, CSV/TSV, common image files, PDF, DOCX, XLSX, unified diff files, and sanitized SVG open with format-aware viewers while unknown extensions continue to use the text fallback. The stock `dsh-web-app` bundle already includes the same viewer rows, so install this layer only when composing a custom Web surface. The layer inserts four browser plugin rows and adds no model-visible behavior.
 
 ## Table of Contents
 
@@ -34,19 +34,25 @@ dsh plugin --profile <name> add @deepseek-ai/dsh-artifact-viewers
 dsh plugin --profile <name> remove @deepseek-ai/dsh-artifact-viewers
 ```
 
-In-box bundles resolve from the dsh installation. During profile reconciliation, `dsh.bundle.patch` points the launcher to this package's `cordis.patch.yml`; if that declaration is absent, the package is not treated as an installable profile layer. Do not add this package to the stock `web` profile, because `dsh-web-app` already inserts the same `ui-sidebar-artifact-preview` row id.
+In-box bundles resolve from the dsh installation. During profile reconciliation, `dsh.bundle.patch` points the launcher to this package's `cordis.patch.yml`; if that declaration is absent, the package is not treated as an installable profile layer. Do not add this package to the stock `web` profile, because `dsh-web-app` already inserts the same viewer row ids.
 
 ### What you get
 
-The patch inserts one client plugin row:
+The patch inserts four client plugin rows:
 
 ```yaml
 - insert:
     - id: ui-sidebar-artifact-preview
       name: '@deepseek-ai/dsh-client-ui-sidebar-artifact-preview'
+    - id: ui-sidebar-office-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-office-preview'
+    - id: ui-sidebar-patch-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-patch-preview'
+    - id: ui-sidebar-svg-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-svg-preview'
 ```
 
-That row contributes right-Sidebar preview tab types for Markdown, JSON, CSV/TSV, and common browser image formats. The behavior is owned by [`@deepseek-ai/dsh-client-ui-sidebar-artifact-preview`](../../client/ui-sidebar-artifact-preview/README.md).
+These rows contribute right-Sidebar preview tab types for Markdown, JSON, CSV/TSV, common browser image formats, PDF, DOCX, XLSX, unified diff files, and sanitized SVG. The corresponding client package READMEs own the format behavior and limits.
 
 -----
 
@@ -56,13 +62,13 @@ That row contributes right-Sidebar preview tab types for Markdown, JSON, CSV/TSV
 <details>
 <summary>Implementation internals - click to expand</summary>
 
-The bundle is a static patch document with one `insert` list. The row id is the same id used by the stock Web bundle, so a profile that applies both layers addresses one row rather than mounting two independent viewers. Loader row ordering does not define activation order; the client plugin waits on the right-Sidebar tab registry, slot registry, locale service, and workspace-files Remote namespace.
+The bundle is a static patch document with one `insert` list. Each row id is the same id used by the stock Web bundle, so a profile that applies both layers addresses the same rows rather than mounting duplicate viewers. Loader row ordering does not define activation order; each client plugin waits on the right-Sidebar tab registry, slot registry, locale service, and workspace-files Remote namespace.
 
 ### Source map
 
 | File | Role |
 |---|---|
-| [`cordis.patch.yml`](cordis.patch.yml) | The installable profile patch, inserting `ui-sidebar-artifact-preview` |
+| [`cordis.patch.yml`](cordis.patch.yml) | The installable profile patch, inserting the rendered viewer rows |
 | [`src/index.ts`](src/index.ts) | Package entry; carries no runtime API |
 | [`tests/artifact-viewers.spec.ts`](tests/artifact-viewers.spec.ts) | Manifest declaration, patch parsing, and inserted-row dependency checks |
 | - | No runtime invariant companion is published; the bundle is a static patch-list carrier and owns no mutable relation to check. |
@@ -84,7 +90,7 @@ The bundle is a static patch document with one `insert` list. The row id is the 
 <a id="model-experience"></a>
 ## Model Experience
 
-None, as the bundle inserts a browser-only viewer row that registers no tool, prompt section, or session event.
+None, as the bundle inserts browser-only viewer rows that register no tool, prompt section, or session event.
 
 #### KV Cache effect
 
@@ -97,8 +103,8 @@ The bundle adds nothing to a model request prefix.
 These limits describe when the bundle is useful and what the inserted viewer does not cover.
 
 - **Web profile prerequisite** - this layer does not insert the Web runtime, right Sidebar, resource provider, or workspace-files Remote namespace.
-- **Stock Web duplicate** - the stock `web` profile already includes the same row id through `dsh-web-app`; installing this bundle there is unnecessary.
-- **Viewer limits live in the plugin** - file formats, image-size limits, SVG exclusion, and first-page text behavior are documented by the inserted client plugin.
+- **Stock Web duplicate** - the stock `web` profile already includes the same viewer row ids through `dsh-web-app`; installing this bundle there is unnecessary.
+- **Viewer limits live in the plugins** - file formats, image-size limits, SVG sanitization, patch syntax, and first-page text behavior are documented by the inserted client plugins.
 - **Patch override semantics apply** - a later profile patch that rewrites or disables `ui-sidebar-artifact-preview` controls whether the viewer remains mounted.
 
 <a id="dev-note"></a>

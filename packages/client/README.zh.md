@@ -45,6 +45,9 @@ kind: "package-group"
 | [`resources/`](resources/README.zh.md) | 统一资源模型：`useResource` 会话标准 hook 背后的协议提供者 | `ctx.resources` |
 | [`ui-sidebar-files/`](ui-sidebar-files/README.zh.md) | 右侧 Sidebar 的工作区文件树 tab 类型 | — |
 | [`ui-sidebar-artifact-preview/`](ui-sidebar-artifact-preview/README.zh.md) | Markdown、JSON、CSV/TSV 和图片的右侧 Sidebar 渲染式 preview | — |
+| [`ui-sidebar-office-preview/`](ui-sidebar-office-preview/README.zh.md) | PDF、DOCX 与 XLSX 的右侧 Sidebar 渲染式 preview | — |
+| [`ui-sidebar-patch-preview/`](ui-sidebar-patch-preview/README.zh.md) | unified diff 与 patch 文件的右侧 Sidebar 渲染式 preview | — |
+| [`ui-sidebar-svg-preview/`](ui-sidebar-svg-preview/README.zh.md) | 经过净化的 SVG 右侧 Sidebar 渲染式 preview | — |
 | [`ui-brand-official/`](ui-brand-official/README.zh.md) | 用官方名称与标记填充通用浏览器品牌 slot | — |
 | [`ui-workspace/`](ui-workspace/README.zh.md) | 提供工作区选择与创建界面 | — |
 | [`ui-conversation/`](ui-conversation/README.zh.md) | 展示当前对话及其输入界面 | — |

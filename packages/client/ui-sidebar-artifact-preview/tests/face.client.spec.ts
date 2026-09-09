@@ -76,6 +76,17 @@ describe('artifact preview face', () => {
     expect(h.tab()).toMatchObject({ loading: false, text: { text: '{"new":true}', version: 'v2' } })
   })
 
+  it('settles a thrown text read error instead of leaving the tab loading', async () => {
+    const h = bench()
+    h.readText.mockRejectedValueOnce(new Error('socket closed'))
+    h.face.loadText(TAB, 'markdown', FILE, new AbortController().signal)
+    await flush()
+    expect(h.tab()).toMatchObject({
+      loading: false,
+      failure: { code: 'artifact-preview/read-failed', message: 'socket closed' },
+    })
+  })
+
   it('assembles image windows into one Blob URL and restarts when the file version changes mid-read', async () => {
     const urls = mockUrl()
     const h = bench()
