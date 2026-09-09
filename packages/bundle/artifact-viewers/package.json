@@ -1,6 +1,6 @@
 {
   "name": "@deepseek-ai/dsh-artifact-viewers",
-  "description": "Installable Web profile layer that adds rendered right-Sidebar artifact viewers for Markdown, JSON, CSV/TSV, images, SVG, PDF, DOCX, and XLSX",
+  "description": "Installable Web profile layer that adds rendered right-Sidebar artifact viewers for Markdown, JSON, CSV/TSV, images, SVG, video, PDF, DOCX, and XLSX",
   "version": "0.1.5-alpha.1",
   "publishConfig": {
     "access": "public"
@@ -37,7 +37,8 @@
     "@deepseek-ai/dsh-client-ui-sidebar-artifact-preview": "workspace:^",
     "@deepseek-ai/dsh-client-ui-sidebar-office-preview": "workspace:^",
     "@deepseek-ai/dsh-client-ui-sidebar-patch-preview": "workspace:^",
-    "@deepseek-ai/dsh-client-ui-sidebar-svg-preview": "workspace:^"
+    "@deepseek-ai/dsh-client-ui-sidebar-svg-preview": "workspace:^",
+    "@deepseek-ai/dsh-client-ui-sidebar-video-preview": "workspace:^"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "workspace:^"

@@ -10,3 +10,5 @@
       name: '@deepseek-ai/dsh-client-ui-sidebar-patch-preview'
     - id: ui-sidebar-svg-preview
       name: '@deepseek-ai/dsh-client-ui-sidebar-svg-preview'
+    - id: ui-sidebar-video-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-video-preview'

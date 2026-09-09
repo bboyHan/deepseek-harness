@@ -28,10 +28,14 @@ describe('dsh-artifact-viewers bundle', () => {
     }, {
       id: 'ui-sidebar-svg-preview',
       name: '@deepseek-ai/dsh-client-ui-sidebar-svg-preview',
+    }, {
+      id: 'ui-sidebar-video-preview',
+      name: '@deepseek-ai/dsh-client-ui-sidebar-video-preview',
     }])
     expect(manifest.dependencies).toHaveProperty('@deepseek-ai/dsh-client-ui-sidebar-artifact-preview')
     expect(manifest.dependencies).toHaveProperty('@deepseek-ai/dsh-client-ui-sidebar-office-preview')
     expect(manifest.dependencies).toHaveProperty('@deepseek-ai/dsh-client-ui-sidebar-patch-preview')
     expect(manifest.dependencies).toHaveProperty('@deepseek-ai/dsh-client-ui-sidebar-svg-preview')
+    expect(manifest.dependencies).toHaveProperty('@deepseek-ai/dsh-client-ui-sidebar-video-preview')
   })
 })

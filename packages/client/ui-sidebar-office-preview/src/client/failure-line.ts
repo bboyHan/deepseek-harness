@@ -26,7 +26,11 @@ function detailNumber(failure: OfficeFailure, key: string): number | undefined {
   return typeof value === 'number' && Number.isFinite(value) ? value : undefined
 }
 
-/** Format a file size for compact preview metadata and failures. */
+/**
+ * Format a file size for compact preview metadata and failures.
+ * @param bytes - byte count to display.
+ * @returns localized compact size text.
+ */
 export function humanBytes(bytes: number): string {
   return fileSizeText(bytes)
 }

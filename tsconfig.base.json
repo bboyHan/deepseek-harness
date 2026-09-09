@@ -166,6 +166,8 @@
       "@deepseek-ai/dsh-client-ui-sidebar-patch-preview/client": ["./packages/client/ui-sidebar-patch-preview/src/client"],
       "@deepseek-ai/dsh-client-ui-sidebar-svg-preview": ["./packages/client/ui-sidebar-svg-preview/src"],
       "@deepseek-ai/dsh-client-ui-sidebar-svg-preview/client": ["./packages/client/ui-sidebar-svg-preview/src/client"],
+      "@deepseek-ai/dsh-client-ui-sidebar-video-preview": ["./packages/client/ui-sidebar-video-preview/src"],
+      "@deepseek-ai/dsh-client-ui-sidebar-video-preview/client": ["./packages/client/ui-sidebar-video-preview/src/client"],
       "@deepseek-ai/dsh-client-ui-sidebar-textpreview": ["./packages/client/ui-sidebar-textpreview/src"],
       "@deepseek-ai/dsh-client-ui-sidebar-textpreview/client": ["./packages/client/ui-sidebar-textpreview/src/client"],
       "@deepseek-ai/dsh-api-workspace-files": ["./packages/api/workspace-files/src"],

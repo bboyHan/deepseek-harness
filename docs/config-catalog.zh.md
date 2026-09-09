@@ -465,6 +465,24 @@ export interface Config {
 
 来源：[`packages/client/ui-sidebar-svg-preview/src/index.ts:5`](../packages/client/ui-sidebar-svg-preview/src/index.ts)
 
+<a id="deepseek-aidsh-client-ui-sidebar-video-preview"></a>
+
+## `@deepseek-ai/dsh-client-ui-sidebar-video-preview`
+
+需要：`connection` · `fs` · `sandboxPolicy` · `sessionController`
+
+```ts config-catalog
+/** Materialized video preview limits. */
+export interface ResolvedConfig {
+  /** Largest video source file this route serves. */
+  readonly maxVideoBytes: number
+  /** Largest byte count returned by one Range response and one full-response stream read. */
+  readonly maxRangeBytes: number
+}
+```
+
+来源：[`packages/client/ui-sidebar-video-preview/src/config.ts:13`](../packages/client/ui-sidebar-video-preview/src/config.ts)
+
 <a id="deepseek-aidsh-code-runtime-worker-thread"></a>
 
 ## `@deepseek-ai/dsh-code-runtime-worker-thread`

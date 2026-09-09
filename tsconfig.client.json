@@ -90,6 +90,7 @@
     { "path": "./packages/client/ui-sidebar-office-preview" },
     { "path": "./packages/client/ui-sidebar-patch-preview" },
     { "path": "./packages/client/ui-sidebar-svg-preview" },
+    { "path": "./packages/client/ui-sidebar-video-preview/tsconfig.client.json" },
     { "path": "./packages/client/ui-sidebar-textpreview" },
     { "path": "./packages/client/ui-sidebar-files" },
     { "path": "./packages/client/ui-jobs" },

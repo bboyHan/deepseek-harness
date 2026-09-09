@@ -1,5 +1,5 @@
 ---
-description: "A Web profile bundle layer that adds rendered right-Sidebar artifact viewers for Markdown, JSON, CSV/TSV, images, Office files, patches, and SVG."
+description: "A Web profile bundle layer that adds rendered right-Sidebar artifact viewers for Markdown, JSON, CSV/TSV, images, Office files, patches, SVG, and video."
 kind: "package-bundle"
 ---
 
@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-`dsh-artifact-viewers` adds rendered right-Sidebar file previews to a custom Web profile. Markdown, JSON, CSV/TSV, common image files, PDF, DOCX, XLSX, unified diff files, and sanitized SVG open with format-aware viewers while unknown extensions continue to use the text fallback. The stock `dsh-web-app` bundle already includes the same viewer rows, so install this layer only when composing a custom Web surface. The layer inserts four browser plugin rows and adds no model-visible behavior.
+`dsh-artifact-viewers` adds rendered right-Sidebar file previews to a custom Web profile. Markdown, JSON, CSV/TSV, common image files, PDF, DOCX, XLSX, unified diff files, sanitized SVG, and video open with format-aware viewers while unknown extensions continue to use the text fallback. The stock `dsh-web-app` bundle already includes the same viewer rows, so install this layer only when composing a custom Web surface. The layer inserts five viewer plugin rows and adds no model-visible behavior.
 
 ## Table of Contents
 
@@ -38,7 +38,7 @@ In-box bundles resolve from the dsh installation. During profile reconciliation,
 
 ### What you get
 
-The patch inserts four client plugin rows:
+The patch inserts five client plugin rows:
 
 ```yaml
 - insert:
@@ -50,9 +50,11 @@ The patch inserts four client plugin rows:
       name: '@deepseek-ai/dsh-client-ui-sidebar-patch-preview'
     - id: ui-sidebar-svg-preview
       name: '@deepseek-ai/dsh-client-ui-sidebar-svg-preview'
+    - id: ui-sidebar-video-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-video-preview'
 ```
 
-These rows contribute right-Sidebar preview tab types for Markdown, JSON, CSV/TSV, common browser image formats, PDF, DOCX, XLSX, unified diff files, and sanitized SVG. The corresponding client package READMEs own the format behavior and limits.
+These rows contribute right-Sidebar preview tab types for Markdown, JSON, CSV/TSV, common browser image formats, PDF, DOCX, XLSX, unified diff files, sanitized SVG, and video. The corresponding client package READMEs own the format behavior and limits.
 
 -----
 
@@ -62,7 +64,7 @@ These rows contribute right-Sidebar preview tab types for Markdown, JSON, CSV/TS
 <details>
 <summary>Implementation internals - click to expand</summary>
 
-The bundle is a static patch document with one `insert` list. Each row id is the same id used by the stock Web bundle, so a profile that applies both layers addresses the same rows rather than mounting duplicate viewers. Loader row ordering does not define activation order; each client plugin waits on the right-Sidebar tab registry, slot registry, locale service, and workspace-files Remote namespace.
+The bundle is a static patch document with one `insert` list. Each row id is the same id used by the stock Web bundle, so a profile that applies both layers addresses the same rows rather than mounting duplicate viewers. Loader row ordering does not define activation order; the inserted plugins rely on the Web profile's right Sidebar, slot registry, locale service, Remote services, and `file` resource provider.
 
 ### Source map
 
@@ -83,6 +85,7 @@ The bundle is a static patch document with one `insert` list. Each row id is the
 - [Bundle package map](../README.md) - installable profile layers.
 - [dsh-web-app](../web-app/README.md) - the stock Web bundle that already includes the viewer.
 - [Artifact preview client plugin](../../client/ui-sidebar-artifact-preview/README.md) - the rendered viewer behavior.
+- [Video preview client plugin](../../client/ui-sidebar-video-preview/README.md) - native playback and Range delivery.
 - [app-boot profile section](../../boot/app-boot/README.md) - how profile bundles resolve and layer.
 
 -----
@@ -90,7 +93,7 @@ The bundle is a static patch document with one `insert` list. Each row id is the
 <a id="model-experience"></a>
 ## Model Experience
 
-None, as the bundle inserts browser-only viewer rows that register no tool, prompt section, or session event.
+None, as the bundle inserts viewer rows that register no tool, prompt section, or session event.
 
 #### KV Cache effect
 
@@ -104,7 +107,7 @@ These limits describe when the bundle is useful and what the inserted viewer doe
 
 - **Web profile prerequisite** - this layer does not insert the Web runtime, right Sidebar, resource provider, or workspace-files Remote namespace.
 - **Stock Web duplicate** - the stock `web` profile already includes the same viewer row ids through `dsh-web-app`; installing this bundle there is unnecessary.
-- **Viewer limits live in the plugins** - file formats, image-size limits, SVG sanitization, patch syntax, and first-page text behavior are documented by the inserted client plugins.
+- **Viewer limits live in the plugins** - file formats, image-size limits, SVG sanitization, patch syntax, video Range delivery, and first-page text behavior are documented by the inserted client plugins.
 - **Patch override semantics apply** - a later profile patch that rewrites or disables `ui-sidebar-artifact-preview` controls whether the viewer remains mounted.
 
 <a id="dev-note"></a>

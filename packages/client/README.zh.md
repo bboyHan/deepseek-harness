@@ -48,6 +48,7 @@ kind: "package-group"
 | [`ui-sidebar-office-preview/`](ui-sidebar-office-preview/README.zh.md) | PDF、DOCX 与 XLSX 的右侧 Sidebar 渲染式 preview | — |
 | [`ui-sidebar-patch-preview/`](ui-sidebar-patch-preview/README.zh.md) | unified diff 与 patch 文件的右侧 Sidebar 渲染式 preview | — |
 | [`ui-sidebar-svg-preview/`](ui-sidebar-svg-preview/README.zh.md) | 经过净化的 SVG 右侧 Sidebar 渲染式 preview | — |
+| [`ui-sidebar-video-preview/`](ui-sidebar-video-preview/README.zh.md) | 基于 Range 的视频右侧 Sidebar 渲染式 preview | — |
 | [`ui-brand-official/`](ui-brand-official/README.zh.md) | 用官方名称与标记填充通用浏览器品牌 slot | — |
 | [`ui-workspace/`](ui-workspace/README.zh.md) | 提供工作区选择与创建界面 | — |
 | [`ui-conversation/`](ui-conversation/README.zh.md) | 展示当前对话及其输入界面 | — |

@@ -115,6 +115,7 @@ const SENTENCE_MODEL_EXPERIENCE: Readonly<Record<string, SentenceContract>> = {
   'packages/client/ui-sidebar-patch-preview': { kind: 'none', reason: 'Browser-only unified diff viewer; registers no tool, prompt section, or session event, and what the user reads never enters a model request.' },
   'packages/client/ui-sidebar-svg-preview': { kind: 'none', reason: 'Browser-only sanitized SVG viewer; registers no tool, prompt section, or session event, and what the user reads never enters a model request.' },
   'packages/client/ui-sidebar-office-preview': { kind: 'none', reason: 'Browser-only PDF, DOCX, and XLSX viewer; registers no tool, prompt section, or session event, and what the user reads never enters a model request.' },
+  'packages/client/ui-sidebar-video-preview': { kind: 'none', reason: 'Right-Sidebar video viewer and Host file route; registers no tool, prompt section, or session event, and playback never enters a model request.' },
   'packages/client/ui-sidebar-textpreview': { kind: 'none', reason: 'Browser-only text viewer; registers no tool, prompt section, or session event, and what the user reads never enters a model request.' },
   'packages/client/ui-sidebar-files': { kind: 'none', reason: 'Browser-only workspace file tree; registers no tool, prompt section, or session event.' },
   'packages/client/resources': { kind: 'none', reason: 'Browser-side resource model (providers, pinning, useResource); registers nothing model-facing.' },

@@ -19,7 +19,7 @@
 | [`client/resources`](../../packages/client/resources/README.zh.md) | `ctx.resources`、`useResource`、协议 → 值类型的花名册 `ResourceProtocolMap` |
 | [`api/workspace-files`](../../packages/api/workspace-files/README.zh.md) | Host `ctx.workspaceFiles`、`workspaceFiles` Remote 命名空间与 Client `file` 资源提供者 |
 | [`util/workspace-path`](../../packages/util/workspace-path/README.zh.md) | 文件地址语法：`fileAddressFor`、`parseFileAddress` |
-| [`client/ui-sidebar-textpreview`](../../packages/client/ui-sidebar-textpreview/README.zh.md)、[`client/ui-sidebar-files`](../../packages/client/ui-sidebar-files/README.zh.md)、[`client/ui-sidebar-artifact-preview`](../../packages/client/ui-sidebar-artifact-preview/README.zh.md)、[`client/ui-sidebar-office-preview`](../../packages/client/ui-sidebar-office-preview/README.zh.md)、[`client/ui-sidebar-patch-preview`](../../packages/client/ui-sidebar-patch-preview/README.zh.md)、[`client/ui-sidebar-svg-preview`](../../packages/client/ui-sidebar-svg-preview/README.zh.md) | 内置的 text、file、artifact、office、patch 与 SVG 类型 |
+| [`client/ui-sidebar-textpreview`](../../packages/client/ui-sidebar-textpreview/README.zh.md)、[`client/ui-sidebar-files`](../../packages/client/ui-sidebar-files/README.zh.md)、[`client/ui-sidebar-artifact-preview`](../../packages/client/ui-sidebar-artifact-preview/README.zh.md)、[`client/ui-sidebar-office-preview`](../../packages/client/ui-sidebar-office-preview/README.zh.md)、[`client/ui-sidebar-patch-preview`](../../packages/client/ui-sidebar-patch-preview/README.zh.md)、[`client/ui-sidebar-svg-preview`](../../packages/client/ui-sidebar-svg-preview/README.zh.md)、[`client/ui-sidebar-video-preview`](../../packages/client/ui-sidebar-video-preview/README.zh.md) | 内置的 text、file、artifact、office、patch、SVG 与 video 类型 |
 
 ## 地址
 
@@ -125,6 +125,7 @@ Host 的 `ctx.workspaceFiles` 服务与生成的 `workspaceFiles` Remote 命名�
 - **`office-pdf`、`office-docx` 与 `office-xlsx`**——`extension`，匹配 PDF、DOCX 与 XLSX 文件。office viewer 在浏览器中组装有界字节并解析各自支持的 document 格式（[README](../../packages/client/ui-sidebar-office-preview/README.zh.md)）。
 - **`patch`**——`extension`，`*.diff`、`*.patch`、`*.udiff`。经 `workspaceFiles.read` 读取第一页文本，解析 unified diff hunk，并用统计信息渲染变更行；不支持的 patch 语法会明确显示失败，不会静默变成 text preview（[README](../../packages/client/ui-sidebar-patch-preview/README.zh.md)）。
 - **`svg`**——`extension`，`*.svg`。读取完整字节，拒绝不安全的主动内容或外部内容，净化 XML，并通过 image Blob URL 渲染（[README](../../packages/client/ui-sidebar-svg-preview/README.zh.md)）。
+- **`video`**——`extension`，主流视频扩展名。提供会话工作区内的 HTTP Range 响应，并使用浏览器原生视频控件；浏览器不支持的编码仍保留下载与外部打开 fallback（[README](../../packages/client/ui-sidebar-video-preview/README.zh.md)）。
 - **`files`**——`builtin`，以 `openTab('files')` 打开。工作区目录树，经 `list` 懒加载，用 `tab.actions.openResource(fileAddressFor(sessionId, root, path))` 在自己所在 pane 打开文件（[README](../../packages/client/ui-sidebar-files/README.zh.md)）。
 
 <a id="not-built"></a>
