@@ -1,0 +1,81 @@
+/** `sidebarArtifactPreview` namespace dictionaries. */
+
+/** Locale namespace. */
+export const NS = 'sidebarArtifactPreview'
+
+/** Simplified Chinese dictionary and key-set source of truth. */
+export const zh = {
+  loading: '正在读取...',
+  changed: '文件已被修改，显示的还是旧内容。',
+  reloadNow: '重新载入',
+  reload: '重新读取文件',
+  retry: '重试',
+  truncatedText: '这里只显示文件开头的一页内容。',
+  imageTooLarge: '图片超过 {limit}，侧栏不会继续读取。',
+  imageIncomplete: '图片读取未完成。',
+  jsonRoot: 'JSON 内容',
+  jsonScalar: 'JSON 值',
+  jsonInvalid: 'JSON 解析失败：{message}',
+  csvEmpty: '这个表格没有可显示的行。',
+  csvRows: '{rows} 行',
+  csvTruncatedColumns: '只显示前 {columns} 列。',
+  'error.notFound': '这个文件不在了。可能已被移动或删除。',
+  'error.outsideWorkspace': '这个文件在工作区之外，侧栏不会读取它。',
+  'error.tooLarge': '读取内容超过 {limit}。',
+  'error.notText': '这不是文本文件，没法在这里查看。',
+  'error.notRegularFile': '这不是一个普通文件，没有可显示的内容。',
+  'error.unavailable': '读取失败：{message}',
+  'markdown.copy': '复制代码',
+  'markdown.copied': '复制成功',
+  'markdown.footnotes': '脚注',
+  'json.copyValue': '复制值',
+  'json.copyJson': '复制 JSON',
+  'json.copyPath': '复制属性路径',
+  'json.copyPrettyJson': '复制格式化 JSON',
+  'json.copyCompactJson': '复制紧凑 JSON',
+  'json.copied': '复制成功',
+  'json.copyFailed': '复制失败',
+  'json.collapseNode': '收起 JSON 节点',
+  'json.expandNode': '展开 JSON 节点',
+  'json.copyButtonTitle': '{action}；右键查看更多复制选项',
+} satisfies Record<string, string>
+
+/** Artifact-preview dictionary key union. */
+export type SidebarArtifactPreviewKey = keyof typeof zh
+
+/** English dictionary, checked against the Chinese key set. */
+export const en = {
+  loading: 'Reading...',
+  changed: 'The file has changed; this is the older preview.',
+  reloadNow: 'Reload',
+  reload: 'Read the file again',
+  retry: 'Retry',
+  truncatedText: 'Only the first page of this file is shown here.',
+  imageTooLarge: 'The image is above {limit}, so the sidebar will not keep reading it.',
+  imageIncomplete: 'The image did not finish reading.',
+  jsonRoot: 'JSON content',
+  jsonScalar: 'JSON value',
+  jsonInvalid: 'JSON parse failed: {message}',
+  csvEmpty: 'This table has no rows to show.',
+  csvRows: '{rows} rows',
+  csvTruncatedColumns: 'Showing the first {columns} columns only.',
+  'error.notFound': 'That file is gone. It may have been moved or deleted.',
+  'error.outsideWorkspace': 'That file is outside the workspace, so the sidebar will not read it.',
+  'error.tooLarge': 'The requested content is above {limit}.',
+  'error.notText': 'That is not a text file, so it cannot be shown here.',
+  'error.notRegularFile': 'That is not a regular file, so it has no content to show.',
+  'error.unavailable': 'Read failed: {message}',
+  'markdown.copy': 'Copy code',
+  'markdown.copied': 'Copied',
+  'markdown.footnotes': 'Footnotes',
+  'json.copyValue': 'Copy value',
+  'json.copyJson': 'Copy JSON',
+  'json.copyPath': 'Copy property path',
+  'json.copyPrettyJson': 'Copy pretty JSON',
+  'json.copyCompactJson': 'Copy compact JSON',
+  'json.copied': 'Copied',
+  'json.copyFailed': 'Copy failed',
+  'json.collapseNode': 'Collapse JSON node',
+  'json.expandNode': 'Expand JSON node',
+  'json.copyButtonTitle': '{action}; right-click for copy options',
+} satisfies Record<SidebarArtifactPreviewKey, string>

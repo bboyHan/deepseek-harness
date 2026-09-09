@@ -399,6 +399,20 @@ export interface Config {
 
 Source: [`packages/client/hmr/src/index.ts:31`](../packages/client/hmr/src/index.ts)
 
+<a id="deepseek-aidsh-client-ui-sidebar-artifact-preview"></a>
+
+## `@deepseek-ai/dsh-client-ui-sidebar-artifact-preview`
+
+```ts config-catalog
+/** Runtime configuration for browser artifact previews. */
+export interface Config {
+  /** Largest image the browser preview assembles into a Blob URL. */
+  maxImageBytes?: number
+}
+```
+
+Source: [`packages/client/ui-sidebar-artifact-preview/src/index.ts:9`](../packages/client/ui-sidebar-artifact-preview/src/index.ts)
+
 <a id="deepseek-aidsh-code-runtime-worker-thread"></a>
 
 ## `@deepseek-ai/dsh-code-runtime-worker-thread`
@@ -3536,6 +3550,7 @@ Imported as libraries by other packages; a `cordis.yml` cannot load them.
 - `@deepseek-ai/dsh-agent-loop-testkit` ([`packages/test-support/agent-loop-testkit/src/index.ts`](../packages/test-support/agent-loop-testkit/src/index.ts))
 - `@deepseek-ai/dsh-anonymous-user-id` ([`packages/identity/anonymous-user-id/src/index.ts`](../packages/identity/anonymous-user-id/src/index.ts))
 - `@deepseek-ai/dsh-app-boot` ([`packages/boot/app-boot/src/index.ts`](../packages/boot/app-boot/src/index.ts))
+- `@deepseek-ai/dsh-artifact-viewers` ([`packages/bundle/artifact-viewers/src/index.ts`](../packages/bundle/artifact-viewers/src/index.ts))
 - `@deepseek-ai/dsh-atomic-write` ([`packages/util/atomic-write/src/index.ts`](../packages/util/atomic-write/src/index.ts))
 - `@deepseek-ai/dsh-base` ([`packages/bundle/base/src/index.ts`](../packages/bundle/base/src/index.ts))
 - `@deepseek-ai/dsh-brand` ([`packages/util/brand/src/index.ts`](../packages/util/brand/src/index.ts))

@@ -1,0 +1,6 @@
+# Rendered right-Sidebar artifact viewers for custom Web profiles.
+# The stock dsh-web-app bundle already includes the same row.
+
+- insert:
+    - id: ui-sidebar-artifact-preview
+      name: '@deepseek-ai/dsh-client-ui-sidebar-artifact-preview'
