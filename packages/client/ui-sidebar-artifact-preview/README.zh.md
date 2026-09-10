@@ -84,7 +84,7 @@ Image viewer 调用 `workspaceFiles.readBytes(sessionId, path, { offset })`，�
 
 - [Web Client subsystem](../../../docs/subsystems/web-client.zh.md)——浏览器插件分层与模块加载。
 - [Slots subsystem](../../../docs/subsystems/slots.zh.md)——keyed body registration 与 store props。
-- [右侧栏文本预览](../ui-sidebar-textpreview/README.zh.md)——fallback file viewer 与分页行为。
+- [右侧栏文档预览](../ui-sidebar-documentpreview/README.zh.md)——fallback file viewer 与分页行为。
 - [Workspace file API](../../api/workspace-files/README.zh.md)——metadata、文本页与 byte window。
 - [产物预览 viewer note](../../../.agents/notes/implemented/feature/2026-09-09-artifact-preview-viewers.zh.md)——为什么第一期停留在现有 file resource 上。
 

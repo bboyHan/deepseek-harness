@@ -21,7 +21,7 @@ describe('video preview component', () => {
     instance.actions.load(TAB_ID, '/api/sidebar-video-preview/file?sessionId=s-1&path=work%2Fclip.mp4&v=0')
     instance.actions.metadata(TAB_ID, { duration: 65, width: 1280, height: 720 })
     const props = propsFor(instance)
-    const resource = meta(true)
+    const resource = meta()
     props.useResource = (() => resource) as typeof props.useResource
     const view = render(<VideoPreview {...props} />)
     const video = view.container.querySelector<HTMLVideoElement>('[data-video-preview-player]')!
@@ -32,10 +32,8 @@ describe('video preview component', () => {
     expect(view.container.querySelector('[data-video-preview-meta]')?.textContent).toContain('4.0KB')
     expect(view.container.querySelector('[data-video-preview-meta]')?.textContent).toContain('1:05')
     expect(view.container.querySelector('[data-video-preview-meta]')?.textContent).toContain('1280 x 720')
-    expect(view.container.querySelector('[data-video-preview-changed]')).not.toBeNull()
     expect(view.container.querySelector<HTMLAnchorElement>('a[download]')?.getAttribute('download')).toBe('clip.mp4')
     fireEvent.click(view.container.querySelector<HTMLButtonElement>('[aria-label="reload"]')!)
-    expect(resource.reload).toHaveBeenCalledTimes(1)
     expect(props.reload).toHaveBeenCalledWith(TAB_ID, expect.objectContaining({ path: 'work/clip.mp4' }), expect.any(AbortSignal))
     fireEvent.click(view.container.querySelector<HTMLButtonElement>('[aria-label="openExternal"]')!)
     expect(props.openExternal).toHaveBeenCalledWith(TAB_ID, '/host/project/work/clip.mp4', expect.any(AbortSignal))
@@ -49,7 +47,6 @@ describe('video preview component', () => {
       status: 'loading',
       value: undefined,
       failure: undefined,
-      reload: () => {},
     })) as unknown as typeof props.useResource
     const view = render(<VideoPreview {...props} />)
     expect(view.container.querySelector('[data-video-preview-body]')?.textContent).toContain('loading')
@@ -104,7 +101,6 @@ describe('video preview component', () => {
       status: 'failed',
       value: undefined,
       failure: { code: 'workspace-file/not-found', message: 'missing', details: {} },
-      reload: () => {},
     })) as unknown as typeof props.useResource
     const view = render(<VideoPreview {...props} />)
     expect(view.container.querySelector('[data-video-preview-meta-failed]')?.textContent).toContain('errorUnavailable')

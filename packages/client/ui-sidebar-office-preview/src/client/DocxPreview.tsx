@@ -15,7 +15,7 @@ export function DocxPreview(props: OfficePreviewProps): ReactNode {
     if (!started) load(data.tabId, 'docx', data.file, data.signal)
   }, [started, data.tabId, data.file, data.signal, load])
   if (state === undefined) return <Loading t={t} />
-  const reloadNow = (): void => { data.meta.reload(); reload(data.tabId, 'docx', data.file, data.signal) }
+  const reloadNow = (): void => { reload(data.tabId, 'docx', data.file, data.signal) }
   const html = state.docx?.html
   return (
     <PreviewChrome data={data} state={state} t={t} reload={reloadNow}>

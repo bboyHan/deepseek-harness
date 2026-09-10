@@ -15,7 +15,7 @@ export function XlsxPreview(props: OfficePreviewProps): ReactNode {
     if (!started) load(data.tabId, 'xlsx', data.file, data.signal)
   }, [started, data.tabId, data.file, data.signal, load])
   if (state === undefined) return <Loading t={t} />
-  const reloadNow = (): void => { data.meta.reload(); reload(data.tabId, 'xlsx', data.file, data.signal) }
+  const reloadNow = (): void => { reload(data.tabId, 'xlsx', data.file, data.signal) }
   return (
     <PreviewChrome data={data} state={state} t={t} reload={reloadNow}>
       <div className={css.body}>

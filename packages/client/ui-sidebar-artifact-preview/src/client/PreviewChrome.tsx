@@ -86,6 +86,10 @@ export function PreviewChrome({
 }): ReactNode {
   const displayPath = data.meta.value?.absolutePath ?? data.file.path
   const bytes = state.text?.bytes ?? state.image?.bytes ?? data.meta.value?.bytes
+  const loadedVersion = state.text?.version ?? state.image?.version
+  const changed = loadedVersion !== undefined
+    && data.meta.value !== undefined
+    && loadedVersion !== data.meta.value.version
   return (
     <div className={css.preview} data-artifact-preview-url={data.contentId}>
       {data.meta.failure !== undefined
@@ -97,7 +101,7 @@ export function PreviewChrome({
             </button>
           </p>
         )
-        : data.meta.value?.changed === true && (
+        : changed && (
           <p className={css.changed} data-artifact-preview-changed>
             <span>{t('changed')}</span>
             <button type="button" className={css.action} data-artifact-preview-reload-now onClick={reload}>

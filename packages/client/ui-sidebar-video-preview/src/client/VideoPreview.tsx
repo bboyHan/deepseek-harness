@@ -35,7 +35,7 @@ export function VideoPreview(props: VideoPreviewProps): ReactNode {
     if (!started) load(data.tabId, data.file, data.signal)
   }, [started, data.tabId, data.file, data.signal, load])
   if (state === undefined) return <Loading t={t} />
-  const refresh = (): void => { data.meta.reload(); reload(data.tabId, data.file, data.signal) }
+  const refresh = (): void => { reload(data.tabId, data.file, data.signal) }
   const openNative = (): void => { openExternal(data.tabId, data.meta.value?.absolutePath ?? data.file.path, data.signal) }
   const handleMetadata = (event: SyntheticEvent<HTMLVideoElement>): void => {
     actions.metadata(data.tabId, metadataOf(event.currentTarget))

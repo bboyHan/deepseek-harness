@@ -27,7 +27,7 @@ export function CsvPreview(props: ArtifactPreviewProps): ReactNode {
     return parseDelimited(state.text.text, delimiterOf(data.file.path))
   }, [state?.text, data.file.path])
   if (state === undefined) return <Loading t={t} />
-  const reload = (): void => { data.meta.reload(); reloadText(data.tabId, 'csv', data.file, data.signal) }
+  const reload = (): void => { reloadText(data.tabId, 'csv', data.file, data.signal) }
   const columns = Math.min(table?.columns ?? 0, MAX_COLUMNS)
   return (
     <PreviewChrome data={data} state={state} t={t} reload={reload}>

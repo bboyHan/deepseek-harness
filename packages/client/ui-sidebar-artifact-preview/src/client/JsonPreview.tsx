@@ -49,7 +49,7 @@ export function JsonPreview(props: ArtifactPreviewProps): ReactNode {
   const labels = useMemo(() => jsonLabels(t), [t])
   const parsed = useMemo(() => state?.text === undefined ? undefined : parseJson(state.text.text), [state?.text])
   if (state === undefined) return <Loading t={t} />
-  const reload = (): void => { data.meta.reload(); reloadText(data.tabId, 'json', data.file, data.signal) }
+  const reload = (): void => { reloadText(data.tabId, 'json', data.file, data.signal) }
   return (
     <PreviewChrome data={data} state={state} t={t} reload={reload}>
       <div

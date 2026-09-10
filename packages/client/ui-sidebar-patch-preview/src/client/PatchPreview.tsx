@@ -64,11 +64,13 @@ export function PatchPreview({
 
   const displayPath = meta.value?.absolutePath ?? file.path
   const reload = (): void => {
-    meta.reload()
     reloadPatch(tab.id, file, tab.signal)
   }
   const patch = state.patch
   const bytes = patch?.bytes ?? meta.value?.bytes
+  const changed = patch !== undefined
+    && meta.value !== undefined
+    && patch.version !== meta.value.version
 
   return (
     <div className={css.preview} data-patch-preview-url={tab.contentId}>
@@ -85,7 +87,7 @@ export function PatchPreview({
             </button>
           </p>
         )
-        : meta.value?.changed === true && (
+        : changed && (
           <p className={css.changed} data-patch-preview-changed>
             <span>{t('changed')}</span>
             <button type="button" className={css.action} data-patch-preview-reload-now onClick={reload}>

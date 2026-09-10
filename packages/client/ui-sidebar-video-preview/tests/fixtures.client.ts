@@ -23,12 +23,11 @@ export function hookOf<T>(inst: { subscribe: (fn: () => void) => () => void; get
 
 type FileResource = ReturnType<VideoPreviewProps['useResource']>
 
-export function meta(changed = false): FileResource {
+export function meta(): FileResource {
   return {
     status: 'live',
-    value: { absolutePath: ABSOLUTE_PATH, version: 'v1', bytes: 4096, changed },
+    value: { absolutePath: ABSOLUTE_PATH, version: 'v1', bytes: 4096 },
     failure: undefined,
-    reload: vi.fn<() => void>(),
   }
 }
 

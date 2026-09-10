@@ -77,7 +77,7 @@ body 用 `workspaceFiles.read(..., { offset: 1 })` 读取第一页文本。parse
 - [Right Sidebar 子系统](../../../docs/subsystems/sidebar-right.zh.md)——tab 路由、资源与 body slot。
 - [Workspace file API](../../api/workspace-files/README.zh.md)——文件 metadata 与有界文本读取。
 - [Artifact preview viewers](../ui-sidebar-artifact-preview/README.zh.md)——Markdown、JSON、CSV/TSV 与图片 viewer。
-- [Text preview](../ui-sidebar-textpreview/README.zh.md)——完整顺序文本分页与 fallback 行为。
+- [Document preview](../ui-sidebar-documentpreview/README.zh.md)——完整顺序文本分页与 fallback 行为。
 - [Patch preview Agent Note](../../../.agents/notes/implemented/feature/2026-09-09-patch-preview.zh.md)——归属与范围决定。
 
 <a id="model-experience"></a>

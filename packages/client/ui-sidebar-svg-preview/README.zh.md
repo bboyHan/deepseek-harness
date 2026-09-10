@@ -89,7 +89,7 @@ face 持有每个 Blob URL，并在 reload 前和 tab abort 时撤销它。gener
 - [Right Sidebar 子系统](../../../docs/subsystems/sidebar-right.zh.md)——tab 路由、resource 地址与 body slot。
 - [Workspace file API](../../api/workspace-files/README.zh.md)——有界字节读取与文件 metadata。
 - [Artifact preview viewers](../ui-sidebar-artifact-preview/README.zh.md)——Markdown、JSON、CSV/TSV 与常见图片 viewer。
-- [Text preview](../ui-sidebar-textpreview/README.zh.md)——完整源码分页与 fallback 行为。
+- [Document preview](../ui-sidebar-documentpreview/README.zh.md)——完整源码分页与 fallback 行为。
 - [SVG preview Agent Note](../../../.agents/notes/implemented/feature/2026-09-09-svg-preview.zh.md)——安全与归属决定。
 - [Preview hardening Agent Note](../../../.agents/notes/implemented/feature/2026-09-09-preview-hardening.zh.md)——外部资源策略、文件大小来源与 PDF fallback。
 

@@ -17,7 +17,7 @@ export function SvgPreview(props: SvgPreviewProps): ReactNode {
   }, [started, data.tabId, data.file, data.signal, load])
   const bodyRef = useRestoredScroll(state)
   if (state === undefined) return <Loading t={t} />
-  const refresh = (): void => { data.meta.reload(); reload(data.tabId, data.file, data.signal) }
+  const refresh = (): void => { reload(data.tabId, data.file, data.signal) }
   return (
     <PreviewChrome data={data} state={state} t={t} reload={refresh}>
       <div

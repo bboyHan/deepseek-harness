@@ -25,7 +25,6 @@ describe('SVG preview component', () => {
     expect(view.container.querySelector<HTMLImageElement>('[data-svg-preview-image]')?.src).toBe('blob:test-1')
     expect(view.container.querySelector('[data-svg-preview-meta]')?.textContent).toContain('20B')
     fireEvent.click(view.container.querySelector<HTMLButtonElement>('[aria-label="reload"]')!)
-    expect(resource.reload).toHaveBeenCalledTimes(1)
     expect(props.reload).toHaveBeenCalledWith(TAB_ID, expect.objectContaining({ path: 'work/result.svg' }), expect.any(AbortSignal))
   })
 
@@ -44,7 +43,6 @@ describe('SVG preview component', () => {
       status: 'failed',
       value: undefined,
       failure: { code: 'workspace-file/not-found', message: 'missing', details: { path: PATH } },
-      reload: () => {},
     })) as unknown as typeof failedProps.useResource
     const failed = render(<SvgPreview {...failedProps} />)
     expect(failed.container.querySelector('[data-svg-preview-meta-failed]')?.textContent).toContain('error.notFound')

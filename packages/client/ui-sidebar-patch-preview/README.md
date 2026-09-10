@@ -75,7 +75,7 @@ The viewer shows a truncation notice when the first page is not EOF and a separa
 - [Right Sidebar subsystem](../../../docs/subsystems/sidebar-right.md) - tab routing, resources, and body slots.
 - [Workspace file API](../../api/workspace-files/README.md) - file metadata and bounded text reads.
 - [Artifact preview viewers](../ui-sidebar-artifact-preview/README.md) - rendered Markdown, JSON, CSV/TSV, and image viewers.
-- [Text preview](../ui-sidebar-textpreview/README.md) - full sequential text paging and fallback behavior.
+- [Document preview](../ui-sidebar-documentpreview/README.md) - full sequential text paging and fallback behavior.
 - [Patch preview Agent Note](../../../.agents/notes/implemented/feature/2026-09-09-patch-preview.md) - the ownership and scope decision.
 
 ## Model Experience

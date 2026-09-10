@@ -26,7 +26,7 @@ export function MarkdownPreview(props: ArtifactPreviewProps): ReactNode {
   const bodyRef = useRestoredScroll(state)
   const labels = useMemo(() => markdownLabels(t), [t])
   if (state === undefined) return <Loading t={t} />
-  const reload = (): void => { data.meta.reload(); reloadText(data.tabId, 'markdown', data.file, data.signal) }
+  const reload = (): void => { reloadText(data.tabId, 'markdown', data.file, data.signal) }
   return (
     <PreviewChrome data={data} state={state} t={t} reload={reload}>
       <div

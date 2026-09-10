@@ -66,7 +66,6 @@ describe('artifact preview components', () => {
     expect(image?.src).toBe('blob:test')
     expect(view.container.querySelector('[data-artifact-preview-meta]')?.textContent).toContain('3B')
     fireEvent.click(view.container.querySelector<HTMLButtonElement>('[data-artifact-preview-tool="reload"]')!)
-    expect(resource.reload).toHaveBeenCalledTimes(1)
     expect(props.reloadImage).toHaveBeenCalledTimes(1)
   })
 })

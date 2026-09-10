@@ -2,8 +2,7 @@ import { vi } from 'vitest'
 import { useSyncExternalStore } from 'react'
 import type { RemoteFailure, RemoteResult } from '@deepseek-ai/dsh-api-remotes/client'
 import type { ResourceSnapshot } from '@deepseek-ai/dsh-client-resources/client'
-import type { WorkspaceFileBytes } from '@deepseek-ai/dsh-api-workspace-files/types'
-import type { WorkspaceFileResource } from '@deepseek-ai/dsh-api-workspace-files/client'
+import type { WorkspaceFileBytes, WorkspaceFileStat } from '@deepseek-ai/dsh-api-workspace-files/types'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import type { TabId } from '@deepseek-ai/dsh-client-ui-dockkit'
 import type { SvgPreviewProps } from '../src/client/PreviewChrome.tsx'
@@ -39,12 +38,11 @@ export function hookOf<T>(inst: { subscribe: (fn: () => void) => () => void; get
   }
 }
 
-export function meta(changed = false, remoteFailure?: RemoteFailure): ResourceSnapshot<WorkspaceFileResource> {
-  const reload = vi.fn<() => void>()
-  const value: WorkspaceFileResource = { absolutePath: ABSOLUTE_PATH, version: 'v1', bytes: 100, changed }
+export function meta(changed = false, remoteFailure?: RemoteFailure): ResourceSnapshot<WorkspaceFileStat> {
+  const value: WorkspaceFileStat = { absolutePath: ABSOLUTE_PATH, version: changed ? 'v2' : 'v1', bytes: 100 }
   return remoteFailure === undefined
-    ? { status: 'live', value, failure: undefined, reload }
-    : { status: 'failed', value, failure: remoteFailure, reload }
+    ? { status: 'live', value, failure: undefined }
+    : { status: 'failed', value, failure: remoteFailure }
 }
 
 export function propsFor(instance: ReturnType<SvgStore['create']>, address = ADDRESS): SvgPreviewProps {

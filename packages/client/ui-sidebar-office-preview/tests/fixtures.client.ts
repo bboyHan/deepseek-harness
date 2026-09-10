@@ -63,9 +63,8 @@ export function propsFor(instance: ReturnType<OfficeStore['create']>, viewer: Of
     sessionId: SESSION,
     useResource: vi.fn(() => ({
       status: 'live',
-      value: { absolutePath: ABSOLUTE_PATH, version: 'v1', bytes: 100, changed: false },
+      value: { absolutePath: ABSOLUTE_PATH, version: 'v1', bytes: 100 },
       failure: undefined,
-      reload: vi.fn(),
     })),
     useStore: hookOf(instance),
     actions: instance.actions,

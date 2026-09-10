@@ -67,19 +67,12 @@ export function PreviewChrome({ data, state, t, reload, openExternal, children }
   const downloadName = downloadNameOf(displayPath)
   return (
     <div className={css.preview} data-video-preview-url={data.contentId}>
-      {data.meta.failure !== undefined
-        ? (
-          <p className={css.changed} data-video-preview-meta-failed={data.meta.failure.code}>
-            <span>{t('errorUnavailable', { message: data.meta.failure.message })}</span>
-            <button type="button" className={css.action} onClick={reload}>{t('reloadNow')}</button>
-          </p>
-        )
-        : data.meta.value?.changed === true && (
-          <p className={css.changed} data-video-preview-changed>
-            <span>{t('changed')}</span>
-            <button type="button" className={css.action} onClick={reload}>{t('reloadNow')}</button>
-          </p>
-        )}
+      {data.meta.failure !== undefined && (
+        <p className={css.changed} data-video-preview-meta-failed={data.meta.failure.code}>
+          <span>{t('errorUnavailable', { message: data.meta.failure.message })}</span>
+          <button type="button" className={css.action} onClick={reload}>{t('reloadNow')}</button>
+        </p>
+      )}
       <div className={css.header}>
         <div className={css.path} title={displayPath} data-video-preview-path>{displayPath}</div>
         <button type="button" className={css.tool} aria-label={t('reload')} title={t('reload')} onClick={reload} disabled={state.loading}>

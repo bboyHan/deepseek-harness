@@ -62,6 +62,9 @@ export function PreviewChrome({ data, state, t, reload, children }: {
 }): ReactNode {
   const displayPath = data.meta.value?.absolutePath ?? data.file.path
   const bytes = state.document?.bytes ?? data.meta.value?.bytes
+  const changed = state.document !== undefined
+    && data.meta.value !== undefined
+    && state.document.version !== data.meta.value.version
   return (
     <div className={css.preview} data-svg-preview-url={data.contentId}>
       {data.meta.failure !== undefined
@@ -71,7 +74,7 @@ export function PreviewChrome({ data, state, t, reload, children }: {
             <button type="button" className={css.action} onClick={reload}>{t('reloadNow')}</button>
           </p>
         )
-        : data.meta.value?.changed === true && (
+        : changed && (
           <p className={css.changed} data-svg-preview-changed>
             <span>{t('changed')}</span>
             <button type="button" className={css.action} onClick={reload}>{t('reloadNow')}</button>

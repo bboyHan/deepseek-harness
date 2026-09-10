@@ -18,7 +18,7 @@ export function ImagePreview(props: ArtifactPreviewProps): ReactNode {
   }, [started, data.tabId, data.file, mime, data.signal, loadImage])
   const bodyRef = useRestoredScroll(state)
   if (state === undefined) return <Loading t={t} />
-  const reload = (): void => { data.meta.reload(); reloadImage(data.tabId, data.file, mime, data.signal) }
+  const reload = (): void => { reloadImage(data.tabId, data.file, mime, data.signal) }
   return (
     <PreviewChrome data={data} state={state} t={t} reload={reload}>
       <div

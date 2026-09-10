@@ -89,7 +89,7 @@ The face owns each Blob URL and revokes it before reload and when the tab aborts
 - [Right Sidebar subsystem](../../../docs/subsystems/sidebar-right.md) - tab routing, resource addresses, and body slots.
 - [Workspace file API](../../api/workspace-files/README.md) - bounded byte reads and file metadata.
 - [Artifact preview viewers](../ui-sidebar-artifact-preview/README.md) - Markdown, JSON, CSV/TSV, and common image viewers.
-- [Text preview](../ui-sidebar-textpreview/README.md) - full source paging and fallback behavior.
+- [Document preview](../ui-sidebar-documentpreview/README.md) - full source paging and fallback behavior.
 - [SVG preview Agent Note](../../../.agents/notes/implemented/feature/2026-09-09-svg-preview.md) - security and ownership decisions.
 - [Preview hardening Agent Note](../../../.agents/notes/implemented/feature/2026-09-09-preview-hardening.md) - external-resource policy, file-size authority, and PDF fallback.
 

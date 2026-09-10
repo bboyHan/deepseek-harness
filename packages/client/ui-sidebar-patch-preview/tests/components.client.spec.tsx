@@ -51,7 +51,6 @@ describe('patch preview component', () => {
     const view = render(<PatchPreview {...props} />)
     expect(view.container.querySelector('[data-patch-preview-empty]')?.textContent).toContain('emptyPatch')
     fireEvent.click(view.container.querySelector<HTMLButtonElement>('[data-patch-preview-tool="reload"]')!)
-    expect(resource.reload).toHaveBeenCalledTimes(1)
     expect(props.reloadPatch).toHaveBeenCalledTimes(1)
   })
 
@@ -66,7 +65,6 @@ describe('patch preview component', () => {
       status: 'failed',
       value: undefined,
       failure: resourceFailure,
-      reload: () => {},
     })) as unknown as typeof props.useResource
     const view = render(<PatchPreview {...props} />)
     expect(view.container.querySelector('[data-patch-preview-path]')?.textContent).toBe('work/change.patch')

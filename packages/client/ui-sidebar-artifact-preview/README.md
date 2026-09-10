@@ -84,7 +84,7 @@ The image viewer calls `workspaceFiles.readBytes(sessionId, path, { offset })` u
 
 - [Web Client subsystem](../../../docs/subsystems/web-client.md) - browser plugin layering and module loading.
 - [Slots subsystem](../../../docs/subsystems/slots.md) - keyed body registration and store props.
-- [Right Sidebar text preview](../ui-sidebar-textpreview/README.md) - fallback file viewer and paging behavior.
+- [Right Sidebar document preview](../ui-sidebar-documentpreview/README.md) - fallback file viewer and paging behavior.
 - [Workspace file API](../../api/workspace-files/README.md) - metadata, text pages, and byte windows.
 - [Artifact preview viewers note](../../../.agents/notes/implemented/feature/2026-09-09-artifact-preview-viewers.md) - why the first phase stays on existing file resources.
 
